@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title align="center">Info</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Estado Bluetooth:</ion-label>
+    <ion-badge color="{{ color }}" item-end>{{ estado }}</ion-badge>
+  </ion-item>
+  <button ion-button color="dark" (click)="signOut()" outline>CERRAR SESION</button>
+</ion-content>

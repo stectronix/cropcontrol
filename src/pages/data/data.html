@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title align="center">
+      Datos
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Estado Bluetooth:</ion-label>
+    <ion-badge color="{{ color }}" item-end>{{ estado }}</ion-badge>
+  </ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title align="center">Datos del sensor</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="thermometer" item-start></ion-icon>
+          <h2 style="margin-top: 0px; font-size: 16px;">Temperatura ambiente</h2>
+          <p *ngIf="showComp" style="float: right;">{{ T }} °C</p>
+        </ion-item>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="../../assets/icon/humidity.svg">
+          </ion-avatar>
+          <h2 style="margin-top: 0px; font-size: 16px;">Humedad ambiente</h2>
+          <p *ngIf="showComp" style="float: right;">{{ HA }} %</p>
+        </ion-item>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="../../assets/icon/co2.svg">
+          </ion-avatar>
+          <h2 style="margin-top: 0px; font-size: 16px;">CO2</h2>
+          <p *ngIf="showComp" style="float: right;">{{ CO }} CO</p>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="contrast" item-start></ion-icon>
+          <h2 style="margin-top: 0px; font-size: 16px;">Intensidad de luz</h2>
+          <p *ngIf="showComp" style="float: right;">{{ IL }} IL</p>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="aperture" item-start></ion-icon>
+          <h2 style="margin-top: 0px; font-size: 16px;">Gamma de lux</h2>
+          <p *ngIf="showComp" style="float: right;">{{ GL }} GL</p>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="thermometer" item-start></ion-icon>
+          <h2 style="margin-top: 0px; font-size: 16px;">Temperatura del suelo</h2>
+          <p *ngIf="showComp" style="float: right;">{{ TS }} °C</p>
+        </ion-item>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="../../assets/icon/humidity.svg">
+          </ion-avatar>
+          <h2 style="margin-top: 0px; font-size: 16px;">Humedad del suelo 20 CMS</h2>
+          <p *ngIf="showComp" style="float: right;">{{ HS1}} HS1</p>
+        </ion-item>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="../../assets/icon/humidity.svg">
+          </ion-avatar>
+          <h2 style="margin-top: 0px; font-size: 16px;">Humedad del suelo 40 CMS</h2>
+          <p *ngIf="showComp" style="float: right;">{{ HS2}} HS2</p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

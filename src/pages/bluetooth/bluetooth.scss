@@ -1,0 +1,25 @@
+page-bluetooth {
+  ion-list {
+    height: 356px;
+    ;
+  }
+
+  ion-scroll {
+    height: 356px;
+  }
+
+  ion-label {
+    font-size: 16px;
+  }
+
+  ion-badge {
+    font-size: 16px;
+    height: 32px;
+    width: 120px;
+    padding: 8px;
+  }
+
+  .card-title-md {
+     font-size: 24px;
+  }
+}

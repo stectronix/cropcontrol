@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="login()" [formGroup]="formLogin">
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+
+          <ion-item>
+            <ion-input type="text" placeholder="Usuario o correo electrónico" formControlName="username"></ion-input>
+          </ion-item>
+          <div *ngIf="formLogin.get('username').errors && formLogin.get('username').dirty">
+            <p color="danger" ion-text *ngIf="formLogin.get('username').hasError('required')"><b>Usuario o correo
+                electrónico</b> es requerido</p>
+          </div>
+
+          <ion-item>
+            <ion-input type="password" placeholder="Contraseña" formControlName="password">
+            </ion-input>
+          </ion-item>
+          <div *ngIf="formLogin.get('password').errors && formLogin.get('password').dirty">
+            <p color="danger" ion-text *ngIf="formLogin.get('password').hasError('required')"><b>Contraseña</b> es
+              requerida</p>
+            <p color="danger" ion-text *ngIf="formLogin.get('password').hasError('minlength')"><b>Contraseña</b> debe
+              tener mínimo 6 caracteres</p>
+            <!-- <p color="danger" ion-text *ngIf="formLogin.get('password').hasError('pattern')">
+              <b>Contraseña:</b>
+              <li>
+                <ul>Debe tener números</ul>
+                <ul>Debe tener un carácter especial</ul>
+                <ul>Debe tener mayúsculas</ul>
+                <ul>Debe tener minúsculas</ul>
+              </li>
+            </p> -->
+          </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button full type="submit" [disabled]="!formLogin.valid">INGRESAR</button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button full (click)="goToSignUp()">REGISTRO</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-label [hidden]='forgot'>¿Olvidó su contraseña? <a (click)="goToForgotPassword()">RECUPERALA ACA</a></ion-label>
+    </ion-col>
+  </ion-row>
+</ion-content>

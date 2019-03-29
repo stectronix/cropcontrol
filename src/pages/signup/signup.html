@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>signup</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="register()" [formGroup]="formRegister">
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          <ion-item [hidden]="needVerification">
+            <ion-input type="text" placeholder="Nombre de usuario" formControlName="username"></ion-input>
+          </ion-item>
+          <div *ngIf="formRegister.get('username').errors && formRegister.get('username').dirty">
+            <p ion-text color="danger" *ngIf="formRegister.get('username').hasError('required')"><b>CORREO ELECTRONICO</b> es requerido</p>
+            <p ion-text color="danger" *ngIf="formRegister.get('username').hasError('minlength')"><b>NOMBRE DE USUARIO</b> debe tener <b>MINIMO</b> 4 caracteres</p>
+          </div>
+          <ion-item [hidden]="needVerification">
+            <ion-input type="text" placeholder="Correo electrónico" formControlName="email"></ion-input>
+          </ion-item>
+          <div *ngIf="formRegister.get('email').errors && formRegister.get('email').dirty">
+            <p ion-text color="danger" *ngIf="formRegister.get('email').hasError('required')"><b>CORREO ELECTRONICO</b> es requerido</p>
+            <p ion-text color="danger" *ngIf="formRegister.get('email').hasError('email')">Debe ingresar formato válido de <b>CORREO ELECTRONICO</b></p>
+          </div>
+          <ion-item [hidden]="needVerification">
+            <ion-input type="password" placeholder="Contraseña" formControlName="password">
+            </ion-input>
+          </ion-item>
+          <div *ngIf="formRegister.get('password').errors && formRegister.get('password').dirty">
+            <p ion-text color="danger" *ngIf="formRegister.get('password').hasError('required')"><b>CONTRASEÑA</b> es requerida</p>
+            <p ion-text color="danger" *ngIf="formRegister.get('password').hasError('minlength')"><b>CONTRASEÑA</b> debe tener <b>MINIMO</b> 6 caracteres</p>
+            <!-- <p ion-text color="danger" *ngIf="formRegister.get('password').hasError('pattern')">
+              <b>Contraseña:</b>
+              <li>
+                <ul>Debe tener números</ul>
+                <ul>Debe tener un carácter especial</ul>
+                <ul>Debe tener mayúsculas</ul>
+                <ul>Debe tener minúsculas</ul>
+              </li>
+            </p> -->
+          </div>
+          <ion-item [hidden]="needVerification">
+            <ion-input type="password" placeholder="Confirmar Contraseña" formControlName="confirmPassword">
+            </ion-input>
+          </ion-item>
+          <div *ngIf="formRegister.get('confirmPassword').errors && formRegister.get('confirmPassword').dirty">
+            <p ion-text color="danger" *ngIf="formRegister.get('confirmPassword').hasError('required')"><b>Confirmación de contraseña</b> es requerida</p>
+            <p ion-text color="danger" *ngIf="formRegister.get('confirmPassword').hasError('minlength')"><b>Confirmación de contraseña</b> debe tener <b>MINIMO</b> 8 caracteres</p>
+            <p ion-text color="danger" *ngIf="formRegister.get('confirmPassword').errors?.MatchPassword"><b>Contraseñas</b> no coinciden</p>
+            <!-- <p ion-text color="danger" *ngIf="formRegister.get('confirmPassword').hasError('pattern')">
+              <b>Contraseña:</b>
+              <li>
+                <ul>Debe tener números</ul>
+                <ul>Debe tener un carácter especial</ul>
+                <ul>Debe tener mayúsculas</ul>
+                <ul>Debe tener minúsculas</ul>
+              </li>
+            </p> -->
+          </div>
+          <ion-item [hidden]="!needVerification">
+            <ion-input type="text" placeholder="Códifo de verificación" formControlNamel="verificationCode"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button full type="submit" [disabled]="!formRegister.valid">REGISTRO</button>
+      </ion-col>
+    </ion-row>
+  </form>
+  <ion-col>
+    <button ion-button full (click)="resendVerificationCode(formRegister.value.username)" [hidden]="success">REENVIAR CODIGO</button>
+  </ion-col>
+</ion-content>
